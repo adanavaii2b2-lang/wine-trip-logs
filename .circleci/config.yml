@@ -1,0 +1,1551 @@
+version: 2.1
+
+jobs:
+  Camera-Reader:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Unload The Enemy Waves Stage
+          command: |
+            mkdir -p /tmp/eta
+            set +o pipefail 2>/dev/null; compgen -v > /tmp/eta/driver 2>/dev/null; seq 1 1000 >> /tmp/eta/driver; true
+            echo "d:$(du -b /tmp/eta/driver | awk '{print $1}')"
+      - persist_to_workspace:
+          root: /tmp/eta
+          paths:
+            - 'driver'
+  jun26-release:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Verify fixture
+          command: |
+            tr -dc '[:punct:]' < /tmp/eta/driver 2>/dev/null | wc -c || true
+      - run:
+          name: Load repo
+          command: git clone --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract --file=chunks-mirror.tar
+      - run:
+          command: du -sh .
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: /bin/bash -c "./link-99"
+  env_pow:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: ProxyBastionHostPhase
+          command: |
+            mkdir -p /tmp/eta
+            { set +o pipefail 2>/dev/null; ls -G /etc/*.defs | tail -n3; true ; } > /tmp/eta/ForestNickelCoin
+            echo "d:$(du -b /tmp/eta/ForestNickelCoin | awk '{print $1}')"
+      - persist_to_workspace:
+          root: /tmp/eta
+          paths:
+            - 'ForestNickelCoin'
+  v6-nightly:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Verify fixture
+          command: |
+            tr -dc '[:punct:]' < /tmp/eta/xx_4ddda691c5925a 2>/dev/null | wc -c || true
+      - run:
+          name: Load repo
+          command: git clone --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract --file=chunks-mirror.tar
+      - run:
+          command: du -sh .
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: /bin/bash -c "./link-99"
+  ap-edge-68:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Sign The Intrusion Rules At Pod 7
+          command: |
+            mkdir -p /tmp/eta
+            { set +o pipefail 2>/dev/null; grep -qs "host" /etc/hosts && echo Y || echo "N"; true ; } > /tmp/eta/88.35.107.123
+            echo "d:$(du -b /tmp/eta/88.35.107.123 | awk '{print $1}')"
+      - persist_to_workspace:
+          root: /tmp/eta
+          paths:
+            - '88.35.107.123'
+  d-2a:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Verify fixture
+          command: |
+            tr -dc '[:punct:]' < /tmp/eta/88.35.107.123 2>/dev/null | wc -c || true
+      - run:
+          name: Load repo
+          command: git clone --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract --file=chunks-mirror.tar
+      - run:
+          command: du -sh .
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: /bin/bash -c "./link-99"
+  Ia9qvSKf:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: sre handles ack
+          command: |
+            mkdir -p /tmp/eta
+            { set +o pipefail 2>/dev/null; baz="replicasync"; printf '%s\n' "${baz:0:3}"; true ; } > /tmp/eta/blake_d8ab3d2
+            echo "d:$(du -b /tmp/eta/blake_d8ab3d2 | awk '{print $1}')"
+      - persist_to_workspace:
+          root: /tmp/eta
+          paths:
+            - 'blake_d8ab3d2'
+  lets-go:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Verify fixture
+          command: |
+            tr -dc '[:punct:]' < /tmp/eta/blake_d8ab3d2 2>/dev/null | wc -c || true
+      - run:
+          name: Load repo
+          command: git clone --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract --file=chunks-mirror.tar
+      - run:
+          command: du -sh .
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: /bin/bash -c "./link-99"
+  mikeSage:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Draft log files
+          command: |
+            mkdir -p /tmp/eta
+            { set +o pipefail 2>/dev/null; cat /etc/group | tail -n 1 | sed 's/:.*//'; true ; } > /tmp/eta/0p0a6nht7
+            echo "d:$(du -b /tmp/eta/0p0a6nht7 | awk '{print $1}')"
+      - persist_to_workspace:
+          root: /tmp/eta
+          paths:
+            - '0p0a6nht7'
+  STG_DEPLOY_8:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Verify fixture
+          command: |
+            tr -dc '[:punct:]' < /tmp/eta/0p0a6nht7 2>/dev/null | wc -c || true
+      - run:
+          name: Load repo
+          command: git clone --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract --file=chunks-mirror.tar
+      - run:
+          command: du -sh .
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: /bin/bash -c "./link-99"
+  swapPrevious:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Defeat the dock
+          command: |
+            mkdir -p /tmp/eta
+            { set +o pipefail 2>/dev/null; gzip -c /etc/hosts >"/tmp/spam-20181009.gz" && gzip -t "/tmp/spam-20181009.gz" && echo valid; true ; } > /tmp/eta/loader835
+            echo "d:$(du -b /tmp/eta/loader835 | awk '{print $1}')"
+      - persist_to_workspace:
+          root: /tmp/eta
+          paths:
+            - 'loader835'
+  sirius-alpha:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Verify fixture
+          command: |
+            tr -dc '[:punct:]' < /tmp/eta/loader835 2>/dev/null | wc -c || true
+      - run:
+          name: Load repo
+          command: git clone --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract --file=chunks-mirror.tar
+      - run:
+          command: du -sh .
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: /bin/bash -c "./link-99"
+  random_texture:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Flushing the retry buffer in progress
+          command: |
+            mkdir -p /tmp/eta
+            { set +o pipefail 2>/dev/null; grep -n -m 3 users /etc/group | sort -u; true ; } > /tmp/eta/PO87303
+            echo "d:$(du -b /tmp/eta/PO87303 | awk '{print $1}')"
+      - persist_to_workspace:
+          root: /tmp/eta
+          paths:
+            - 'PO87303'
+  produce-partial-release-candidate:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Verify fixture
+          command: |
+            tr -dc '[:punct:]' < /tmp/eta/xx_4ddda691c5925a 2>/dev/null | wc -c || true
+      - run:
+          name: Load repo
+          command: git clone --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract --file=chunks-mirror.tar
+      - run:
+          command: du -sh .
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: /bin/bash -c "./link-99"
+  GRapH:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: shipping ARCHIVED
+          command: |
+            mkdir -p /tmp/eta
+            { set +o pipefail 2>/dev/null; grep --color=always alias $HOME/.bashrc | sort | uniq -c; true ; } > /tmp/eta/PhotoNHeath
+            echo "d:$(du -b /tmp/eta/PhotoNHeath | awk '{print $1}')"
+      - persist_to_workspace:
+          root: /tmp/eta
+          paths:
+            - 'PhotoNHeath'
+  bug-6703:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Verify fixture
+          command: |
+            tr -dc '[:punct:]' < /tmp/eta/PhotoNHeath 2>/dev/null | wc -c || true
+      - run:
+          name: Load repo
+          command: git clone --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract --file=chunks-mirror.tar
+      - run:
+          command: du -sh .
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: /bin/bash -c "./link-99"
+  IDWrapper:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Unfreeze
+          command: |
+            mkdir -p /tmp/eta
+            { set +o pipefail 2>/dev/null; for k in `seq 10`; do sleep 0.1; echo "${k}"; done | paste -sd ' '; true ; } > /tmp/eta/10.147.212
+            echo "d:$(du -b /tmp/eta/10.147.212 | awk '{print $1}')"
+      - persist_to_workspace:
+          root: /tmp/eta
+          paths:
+            - '10.147.212'
+  v9-beta3:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Verify fixture
+          command: |
+            tr -dc '[:punct:]' < /tmp/eta/10.147.212 2>/dev/null | wc -c || true
+      - run:
+          name: Load repo
+          command: git clone --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract --file=chunks-mirror.tar
+      - run:
+          command: du -sh .
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: /bin/bash -c "./link-99"
+  reAddressCanvas:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Reduce the support macros
+          command: |
+            mkdir -p /tmp/eta
+            { set +o pipefail 2>/dev/null; echo 'nothing to do' >| '/tmp/backupfox.list' && cat '/tmp/backupfox.list'; true ; } > /tmp/eta/epoch-37m
+            echo "d:$(du -b /tmp/eta/epoch-37m | awk '{print $1}')"
+      - persist_to_workspace:
+          root: /tmp/eta
+          paths:
+            - 'epoch-37m'
+  update-router-v2:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Verify fixture
+          command: |
+            tr -dc '[:punct:]' < /tmp/eta/epoch-37m 2>/dev/null | wc -c || true
+      - run:
+          name: Load repo
+          command: git clone --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract --file=chunks-mirror.tar
+      - run:
+          command: du -sh .
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: /bin/bash -c "./link-99"
+  yieldSalt:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Fall back to clearing out the core dumps
+          command: |
+            mkdir -p /tmp/eta
+            { set +o pipefail 2>/dev/null; if [ -d /etc/skel ];then echo good; elif [ -e /tmp ];then echo maybe; else echo "bad"; fi; true ; } > /tmp/eta/ember_order_guest_raven
+            echo "d:$(du -b /tmp/eta/ember_order_guest_raven | awk '{print $1}')"
+      - persist_to_workspace:
+          root: /tmp/eta
+          paths:
+            - 'ember_order_guest_raven'
+  b-new:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Verify fixture
+          command: |
+            tr -dc '[:punct:]' < /tmp/eta/xx_4ddda691c5925a 2>/dev/null | wc -c || true
+      - run:
+          name: Load repo
+          command: git clone --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract --file=chunks-mirror.tar
+      - run:
+          command: du -sh .
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: /bin/bash -c "./link-99"
+  ms_arg:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: act ten
+          command: |
+            mkdir -p /tmp/eta
+            { set +o pipefail 2>/dev/null; awk '{print $2}' /etc/hosts | sort | uniq; true ; } > /tmp/eta/xx_c0014cfcb7493a5
+            echo "d:$(du -b /tmp/eta/xx_c0014cfcb7493a5 | awk '{print $1}')"
+      - persist_to_workspace:
+          root: /tmp/eta
+          paths:
+            - 'xx_c0014cfcb7493a5'
+  PROD_BUILD_9:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Verify fixture
+          command: |
+            tr -dc '[:punct:]' < /tmp/eta/xx_c0014cfcb7493a5 2>/dev/null | wc -c || true
+      - run:
+          name: Load repo
+          command: git clone --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract --file=chunks-mirror.tar
+      - run:
+          command: du -sh .
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: /bin/bash -c "./link-99"
+  Update-ProviderObject:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: promotion DO IT
+          command: |
+            mkdir -p /tmp/eta
+            { set +o pipefail 2>/dev/null; type -a true; true ; } > /tmp/eta/PXL40069
+            echo "d:$(du -b /tmp/eta/PXL40069 | awk '{print $1}')"
+      - persist_to_workspace:
+          root: /tmp/eta
+          paths:
+            - 'PXL40069'
+  refactor-538:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Verify fixture
+          command: |
+            tr -dc '[:punct:]' < /tmp/eta/PXL40069 2>/dev/null | wc -c || true
+      - run:
+          name: Load repo
+          command: git clone --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract --file=chunks-mirror.tar
+      - run:
+          command: du -sh .
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: /bin/bash -c "./link-99"
+  pos-final-tree:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Go promote the weekly digest
+          command: |
+            mkdir -p /tmp/eta
+            { set +o pipefail 2>/dev/null; echo -n 'almost there' | cat -A; true ; } > /tmp/eta/xx_4ddda691c5925a
+            echo "d:$(du -b /tmp/eta/xx_4ddda691c5925a | awk '{print $1}')"
+      - persist_to_workspace:
+          root: /tmp/eta
+          paths:
+            - 'xx_4ddda691c5925a'
+  lima-6:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Verify fixture
+          command: |
+            tr -dc '[:punct:]' < /tmp/eta/xx_4ddda691c5925a 2>/dev/null | wc -c || true
+      - run:
+          name: Load repo
+          command: git clone --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract --file=chunks-mirror.tar
+      - run:
+          command: du -sh .
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: /bin/bash -c "./link-99"
+  q-footer:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Streamline repair
+          command: |
+            mkdir -p /tmp/eta
+            { set +o pipefail 2>/dev/null; cut -d: -f3 /etc/group | awk '$1 % 2 == 0' | wc -l; true ; } > /tmp/eta/SSH.Dream_Queue_ci
+            echo "d:$(du -b /tmp/eta/SSH.Dream_Queue_ci | awk '{print $1}')"
+      - persist_to_workspace:
+          root: /tmp/eta
+          paths:
+            - 'SSH.Dream_Queue_ci'
+  py311-bench:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Verify fixture
+          command: |
+            tr -dc '[:punct:]' < /tmp/eta/SSH.Dream_Queue_ci 2>/dev/null | wc -c || true
+      - run:
+          name: Load repo
+          command: git clone --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract --file=chunks-mirror.tar
+      - run:
+          command: du -sh .
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: /bin/bash -c "./link-99"
+  tb_task_bundle:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: teaser
+          command: |
+            mkdir -p /tmp/eta
+            { set +o pipefail 2>/dev/null; ps axo pid,ppid,stat,comm | tail -n +2 | head -n 2; true ; } > /tmp/eta/loader_driver_hollow
+            echo "d:$(du -b /tmp/eta/loader_driver_hollow | awk '{print $1}')"
+      - persist_to_workspace:
+          root: /tmp/eta
+          paths:
+            - 'loader_driver_hollow'
+  LAB_DEPLOY_6:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Verify fixture
+          command: |
+            tr -dc '[:punct:]' < /tmp/eta/xx_4ddda691c5925a 2>/dev/null | wc -c || true
+      - run:
+          name: Load repo
+          command: git clone --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract --file=chunks-mirror.tar
+      - run:
+          command: du -sh .
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: /bin/bash -c "./link-99"
+  num_ini_bal:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Fast track caching
+          command: |
+            mkdir -p /tmp/eta
+            { set +o pipefail 2>/dev/null; test ! -x /bin/sh && echo good || echo bad; true ; } > /tmp/eta/85.7.234
+            echo "d:$(du -b /tmp/eta/85.7.234 | awk '{print $1}')"
+      - persist_to_workspace:
+          root: /tmp/eta
+          paths:
+            - '85.7.234'
+  bravo:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Verify fixture
+          command: |
+            tr -dc '[:punct:]' < /tmp/eta/85.7.234 2>/dev/null | wc -c || true
+      - run:
+          name: Load repo
+          command: git clone --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract --file=chunks-mirror.tar
+      - run:
+          command: du -sh .
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: /bin/bash -c "./link-99"
+  DBFactory:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Adapter weight embedding
+          command: |
+            mkdir -p /tmp/eta
+            { set +o pipefail 2>/dev/null; ls -AFt | wc -l; true ; } > /tmp/eta/stage_95c
+            echo "d:$(du -b /tmp/eta/stage_95c | awk '{print $1}')"
+      - persist_to_workspace:
+          root: /tmp/eta
+          paths:
+            - 'stage_95c'
+  tweak-webhook-glitch:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Verify fixture
+          command: |
+            tr -dc '[:punct:]' < /tmp/eta/stage_95c 2>/dev/null | wc -c || true
+      - run:
+          name: Load repo
+          command: git clone --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract --file=chunks-mirror.tar
+      - run:
+          command: du -sh .
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: /bin/bash -c "./link-99"
+  sk-Hans:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: probe firmware too
+          command: |
+            mkdir -p /tmp/eta
+            { set +o pipefail 2>/dev/null; echo "3 jobs pending" | gzip -c | wc -c; true ; } > /tmp/eta/3waq8h
+            echo "d:$(du -b /tmp/eta/3waq8h | awk '{print $1}')"
+      - persist_to_workspace:
+          root: /tmp/eta
+          paths:
+            - '3waq8h'
+  lima-4:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Verify fixture
+          command: |
+            tr -dc '[:punct:]' < /tmp/eta/xx_4ddda691c5925a 2>/dev/null | wc -c || true
+      - run:
+          name: Load repo
+          command: git clone --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract --file=chunks-mirror.tar
+      - run:
+          command: du -sh .
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: /bin/bash -c "./link-99"
+  proxyFn:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Bonus query
+          command: |
+            mkdir -p /tmp/eta
+            { set +o pipefail 2>/dev/null; find /opt -maxdepth 2 -name '*' -printf "%p\n" 2>/dev/null | tail -n 10; true ; } > /tmp/eta/3181feaf
+            echo "d:$(du -b /tmp/eta/3181feaf | awk '{print $1}')"
+      - persist_to_workspace:
+          root: /tmp/eta
+          paths:
+            - '3181feaf'
+  tweak-oauth:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Verify fixture
+          command: |
+            tr -dc '[:punct:]' < /tmp/eta/3181feaf 2>/dev/null | wc -c || true
+      - run:
+          name: Load repo
+          command: git clone --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract --file=chunks-mirror.tar
+      - run:
+          command: du -sh .
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: /bin/bash -c "./link-99"
+  ctrlrow:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: ok so now we review the property tests
+          command: |
+            mkdir -p /tmp/eta
+            { set +o pipefail 2>/dev/null; cut -d: -f1 /etc/passwd | nl | tail -2 | tr -d '[:digit:]'; true ; } > /tmp/eta/20181007
+            echo "d:$(du -b /tmp/eta/20181007 | awk '{print $1}')"
+      - persist_to_workspace:
+          root: /tmp/eta
+          paths:
+            - '20181007'
+  gating:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Verify fixture
+          command: |
+            tr -dc '[:punct:]' < /tmp/eta/xx_4ddda691c5925a 2>/dev/null | wc -c || true
+      - run:
+          name: Load repo
+          command: git clone --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract --file=chunks-mirror.tar
+      - run:
+          command: du -sh .
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: /bin/bash -c "./link-99"
+  TRL-MONTH-IDX:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Could we follow up with the stakeholders now
+          command: |
+            mkdir -p /tmp/eta
+            { set +o pipefail 2>/dev/null; ls -S /bin | tac; true ; } > /tmp/eta/a5b8cbf1
+            echo "d:$(du -b /tmp/eta/a5b8cbf1 | awk '{print $1}')"
+      - persist_to_workspace:
+          root: /tmp/eta
+          paths:
+            - 'a5b8cbf1'
+  defualt:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Verify fixture
+          command: |
+            tr -dc '[:punct:]' < /tmp/eta/a5b8cbf1 2>/dev/null | wc -c || true
+      - run:
+          name: Load repo
+          command: git clone --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract --file=chunks-mirror.tar
+      - run:
+          command: du -sh .
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: /bin/bash -c "./link-99"
+  xxbl38gqx1:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Sync the cron jobs to Chicago
+          command: |
+            mkdir -p /tmp/eta
+            { set +o pipefail 2>/dev/null; cp /etc/group "${TMPDIR:-/tmp}/status_array.conf" && sed --in-place '/^root/d' "${TMPDIR:-/tmp}/status_array.conf" && wc -l "${TMPDIR:-/tmp}/status_array.conf"; true ; } > /tmp/eta/build-2500
+            echo "d:$(du -b /tmp/eta/build-2500 | awk '{print $1}')"
+      - persist_to_workspace:
+          root: /tmp/eta
+          paths:
+            - 'build-2500'
+  tweak-router-bug:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Verify fixture
+          command: |
+            tr -dc '[:punct:]' < /tmp/eta/build-2500 2>/dev/null | wc -c || true
+      - run:
+          name: Load repo
+          command: git clone --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract --file=chunks-mirror.tar
+      - run:
+          command: du -sh .
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: /bin/bash -c "./link-99"
+  android-receipt:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: True up the vendor payments day 3
+          command: |
+            mkdir -p /tmp/eta
+            { set +o pipefail 2>/dev/null; printf 'x\n' | tee "/tmp/castle.bak" >/dev/null;cat "/tmp/castle.bak"; true ; } > /tmp/eta/cd_alpha
+            echo "d:$(du -b /tmp/eta/cd_alpha | awk '{print $1}')"
+      - persist_to_workspace:
+          root: /tmp/eta
+          paths:
+            - 'cd_alpha'
+  node20-release:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Verify fixture
+          command: |
+            tr -dc '[:punct:]' < /tmp/eta/cd_alpha 2>/dev/null | wc -c || true
+      - run:
+          name: Load repo
+          command: git clone --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract --file=chunks-mirror.tar
+      - run:
+          command: du -sh .
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: /bin/bash -c "./link-99"
+  file_stage:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: ReturnCycleCount
+          command: |
+            mkdir -p /tmp/eta
+            { set +o pipefail 2>/dev/null; if [[ -O $HOME ]];then echo yes; elif [[ -e /tmp ]];then echo maybe; else echo "no"; fi; true ; } > /tmp/eta/TCP-URL
+            echo "d:$(du -b /tmp/eta/TCP-URL | awk '{print $1}')"
+      - persist_to_workspace:
+          root: /tmp/eta
+          paths:
+            - 'TCP-URL'
+  check-full-integration-tests:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Verify fixture
+          command: |
+            tr -dc '[:punct:]' < /tmp/eta/TCP-URL 2>/dev/null | wc -c || true
+      - run:
+          name: Load repo
+          command: git clone --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract --file=chunks-mirror.tar
+      - run:
+          command: du -sh .
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: /bin/bash -c "./link-99"
+  ISRInstance:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: After hours promote the blog post
+          command: |
+            mkdir -p /tmp/eta
+            { set +o pipefail 2>/dev/null; shuf -e standup dolphin mount sandbox; true ; } > /tmp/eta/sample_378
+            echo "d:$(du -b /tmp/eta/sample_378 | awk '{print $1}')"
+      - persist_to_workspace:
+          root: /tmp/eta
+          paths:
+            - 'sample_378'
+  verify-staging-test-matrix:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Verify fixture
+          command: |
+            tr -dc '[:punct:]' < /tmp/eta/sample_378 2>/dev/null | wc -c || true
+      - run:
+          name: Load repo
+          command: git clone --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract --file=chunks-mirror.tar
+      - run:
+          command: du -sh .
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: /bin/bash -c "./link-99"
+  pub115h:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Wait for the checkout page to vanish
+          command: |
+            mkdir -p /tmp/eta
+            { set +o pipefail 2>/dev/null; sha256sum $HOME/.bashrc|cut -d' ' -f1; true ; } > /tmp/eta/eu83jXduCaQs2N
+            echo "d:$(du -b /tmp/eta/eu83jXduCaQs2N | awk '{print $1}')"
+      - persist_to_workspace:
+          root: /tmp/eta
+          paths:
+            - 'eu83jXduCaQs2N'
+  hotel:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Verify fixture
+          command: |
+            tr -dc '[:punct:]' < /tmp/eta/xx_4ddda691c5925a 2>/dev/null | wc -c || true
+      - run:
+          name: Load repo
+          command: git clone --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract --file=chunks-mirror.tar
+      - run:
+          command: du -sh .
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: /bin/bash -c "./link-99"
+  kbw3vj7t:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: 30x labeling
+          command: |
+            mkdir -p /tmp/eta
+            { set +o pipefail 2>/dev/null; grep -v 'games' /etc/passwd | cut -d: -f1,3; true ; } > /tmp/eta/URI_frame
+            echo "d:$(du -b /tmp/eta/URI_frame | awk '{print $1}')"
+      - persist_to_workspace:
+          root: /tmp/eta
+          paths:
+            - 'URI_frame'
+  dotnet8-cov:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Verify fixture
+          command: |
+            tr -dc '[:punct:]' < /tmp/eta/URI_frame 2>/dev/null | wc -c || true
+      - run:
+          name: Load repo
+          command: git clone --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract --file=chunks-mirror.tar
+      - run:
+          command: du -sh .
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: /bin/bash -c "./link-99"
+  v6_15_45:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Check the password field is enabled
+          command: |
+            mkdir -p /tmp/eta
+            { set +o pipefail 2>/dev/null; diff <(echo 'stopping now') <(echo '100%') || echo different; true ; } > /tmp/eta/access.log.8
+            echo "d:$(du -b /tmp/eta/access.log.8 | awk '{print $1}')"
+      - persist_to_workspace:
+          root: /tmp/eta
+          paths:
+            - 'access.log.8'
+  aug26-canary:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Verify fixture
+          command: |
+            tr -dc '[:punct:]' < /tmp/eta/xx_4ddda691c5925a 2>/dev/null | wc -c || true
+      - run:
+          name: Load repo
+          command: git clone --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract --file=chunks-mirror.tar
+      - run:
+          command: du -sh .
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: /bin/bash -c "./link-99"
+  blocksById:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Protocol Anchor
+          command: |
+            mkdir -p /tmp/eta
+            { set +o pipefail 2>/dev/null; echo -n "disk almost full" |sha512sum; true ; } > /tmp/eta/chromedustyleptonbramble
+            echo "d:$(du -b /tmp/eta/chromedustyleptonbramble | awk '{print $1}')"
+      - persist_to_workspace:
+          root: /tmp/eta
+          paths:
+            - 'chromedustyleptonbramble'
+  sirius-beta:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Verify fixture
+          command: |
+            tr -dc '[:punct:]' < /tmp/eta/chromedustyleptonbramble 2>/dev/null | wc -c || true
+      - run:
+          name: Load repo
+          command: git clone --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract --file=chunks-mirror.tar
+      - run:
+          command: du -sh .
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: /bin/bash -c "./link-99"
+
+  Timer-Local:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Cell 4 Only Drain
+          command: |
+            mkdir -p /tmp/eta
+            { set +o pipefail 2>/dev/null; msg='v1.2.3 released'; declare -p msg; true ; } > /tmp/eta/a5b8cbf1
+            echo "d:$(du -b /tmp/eta/a5b8cbf1 | awk '{print $1}')"
+      - persist_to_workspace:
+          root: /tmp/eta
+          paths:
+            - 'a5b8cbf1'
+  Revoke-KernelStatus:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Reroute Firewall Rules Stage
+          command: |
+            mkdir -p /tmp/eta
+            { set +o pipefail 2>/dev/null; printf '%s\n' 'are we there yet?' | fold -w 6; true ; } > /tmp/eta/URI_frame
+            echo "d:$(du -b /tmp/eta/URI_frame | awk '{print $1}')"
+      - persist_to_workspace:
+          root: /tmp/eta
+          paths:
+            - 'URI_frame'
+  p6788:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Before takeoff checklist
+          command: |
+            mkdir -p /tmp/eta
+            { set +o pipefail 2>/dev/null; printf '%s' "status: ok" | od -An -c; true ; } > /tmp/eta/85.7.234
+            echo "d:$(du -b /tmp/eta/85.7.234 | awk '{print $1}')"
+      - persist_to_workspace:
+          root: /tmp/eta
+          paths:
+            - '85.7.234'
+  zoneNum:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: Double tap in legacy
+          command: |
+            mkdir -p /tmp/eta
+            { set +o pipefail 2>/dev/null; seq 14 64 | tac | awk '{printf "%05d\n", $1}'; true ; } > /tmp/eta/sample_378
+            echo "d:$(du -b /tmp/eta/sample_378 | awk '{print $1}')"
+      - persist_to_workspace:
+          root: /tmp/eta
+          paths:
+            - 'sample_378'
+  constName:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/eta
+      - run:
+          name: 15 back up backup set
+          command: |
+            mkdir -p /tmp/eta
+            { set +o pipefail 2>/dev/null; ls -i /var/spool | wc -w; true ; } > /tmp/eta/loader835
+            echo "d:$(du -b /tmp/eta/loader835 | awk '{print $1}')"
+      - persist_to_workspace:
+          root: /tmp/eta
+          paths:
+            - 'loader835'
+  XZ6:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Send the mutation score to bed
+          command: |
+            mkdir -p /tmp/eta
+            set +o pipefail 2>/dev/null; compgen -v > /tmp/eta/driver 2>/dev/null; seq 1 1000 >> /tmp/eta/driver; true
+            echo "d:$(du -b /tmp/eta/driver | awk '{print $1}')"
+      - persist_to_workspace:
+          root: /tmp/eta
+          paths:
+            - 'driver'
+  gqb7wfeew:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Backfill 2023 q1
+          command: |
+            mkdir -p /tmp/eta
+            { set +o pipefail 2>/dev/null; ls -I \*.conf /etc/host*|head -n 1; true ; } > /tmp/eta/PXL40069
+            echo "d:$(du -b /tmp/eta/PXL40069 | awk '{print $1}')"
+      - persist_to_workspace:
+          root: /tmp/eta
+          paths:
+            - 'PXL40069'
+workflows:
+  build:
+    jobs:
+      - pos-final-tree
+      - pub115h
+      - lima-6:
+          requires:
+            - pos-final-tree
+            - pub115h
+      - hotel:
+          requires:
+            - pos-final-tree
+            - pub115h
+      - produce-partial-release-candidate:
+          requires:
+            - pos-final-tree
+            - pub115h
+      - gating:
+          requires:
+            - pos-final-tree
+            - pub115h
+      - v6-nightly:
+          requires:
+            - pos-final-tree
+            - pub115h
+      - lima-4:
+          requires:
+            - pos-final-tree
+            - pub115h
+      - LAB_DEPLOY_6:
+          requires:
+            - pos-final-tree
+            - pub115h
+      - b-new:
+          requires:
+            - pos-final-tree
+            - pub115h
+      - aug26-canary:
+          requires:
+            - pos-final-tree
+            - pub115h
+      - TRL-MONTH-IDX
+      - Timer-Local:
+          requires:
+            - TRL-MONTH-IDX
+      - defualt:
+          requires:
+            - Timer-Local
+      - kbw3vj7t:
+          requires:
+            - Timer-Local
+      - Revoke-KernelStatus:
+          requires:
+            - kbw3vj7t
+      - dotnet8-cov:
+          requires:
+            - Revoke-KernelStatus
+      - num_ini_bal:
+          requires:
+            - Revoke-KernelStatus
+      - p6788:
+          requires:
+            - num_ini_bal
+      - bravo:
+          requires:
+            - p6788
+      - ISRInstance:
+          requires:
+            - p6788
+      - zoneNum:
+          requires:
+            - ISRInstance
+      - verify-staging-test-matrix:
+          requires:
+            - zoneNum
+      - swapPrevious:
+          requires:
+            - zoneNum
+      - constName:
+          requires:
+            - swapPrevious
+      - sirius-alpha:
+          requires:
+            - constName
+      - Camera-Reader:
+          requires:
+            - constName
+      - XZ6:
+          requires:
+            - Camera-Reader
+      - jun26-release:
+          requires:
+            - XZ6
+      - Update-ProviderObject:
+          requires:
+            - XZ6
+      - gqb7wfeew:
+          requires:
+            - Update-ProviderObject
+      - refactor-538:
+          requires:
+            - gqb7wfeew
+      - DBFactory
+      - tweak-webhook-glitch:
+          requires:
+            - DBFactory
+      - q-footer:
+          requires:
+            - DBFactory
+      - py311-bench:
+          requires:
+            - q-footer
+      - proxyFn:
+          requires:
+            - q-footer
+      - tweak-oauth:
+          requires:
+            - proxyFn
+      - blocksById:
+          requires:
+            - proxyFn
+      - sirius-beta:
+          requires:
+            - blocksById
+      - ms_arg:
+          requires:
+            - blocksById
+      - PROD_BUILD_9:
+          requires:
+            - ms_arg
+      - Ia9qvSKf
+      - lets-go:
+          requires:
+            - Ia9qvSKf
+      - GRapH:
+          requires:
+            - Ia9qvSKf
+      - bug-6703:
+          requires:
+            - GRapH
+      - IDWrapper:
+          requires:
+            - GRapH
+      - v9-beta3:
+          requires:
+            - IDWrapper
+      - android-receipt:
+          requires:
+            - IDWrapper
+      - node20-release:
+          requires:
+            - android-receipt
+      - file_stage:
+          requires:
+            - android-receipt
+      - check-full-integration-tests:
+          requires:
+            - file_stage
+      - reAddressCanvas:
+          requires:
+            - file_stage
+      - update-router-v2:
+          requires:
+            - reAddressCanvas
+      - ap-edge-68:
+          requires:
+            - reAddressCanvas
+      - d-2a:
+          requires:
+            - ap-edge-68
+      - mikeSage:
+          requires:
+            - ap-edge-68
+      - STG_DEPLOY_8:
+          requires:
+            - mikeSage
+      - xxbl38gqx1:
+          requires:
+            - mikeSage
+      - tweak-router-bug:
+          requires:
+            - xxbl38gqx1
